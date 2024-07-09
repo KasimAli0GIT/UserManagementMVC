@@ -1,0 +1,65 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h1>Do Math</h1>
+    <br />
+    <br />
+
+    @{
+        var data = TempData["IsError"];
+    }
+
+    @if (data == null)
+    {
+        <form action="/math/domath" method="post">
+            <table width="40%" align="center" cellspacing="10">
+        <tr>
+            <th>Enter Number 1</th>
+            <td>
+               <input type="number" name="txtNum1" id="txtNum1" required />
+            </td>
+        </tr>
+        <tr>
+            <th>Enter Number 2</th>
+            <td>
+                <input type="number" name="txtNum2" id="txtNum2" required />
+            </td>
+        </tr>
+
+        <tr>
+            <th>Operations</th>
+            <td>
+                <select id="sltOpr" name="sltOpr">
+                    <option value="add">Add</option>
+                    <option value="sub">Subtract</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="Do Math" />
+            </td>
+        </tr>
+    </table>
+        </form>
+    }else
+    {
+        bool iserror = (bool)TempData["IsError"];
+        if(iserror)
+        {
+            <h2 style="color:red">Cannot subtract as result will be negative</h2>
+        }
+    }
+
+</body>
+</html>

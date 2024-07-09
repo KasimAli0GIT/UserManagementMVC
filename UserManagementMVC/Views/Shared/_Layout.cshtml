@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>User management</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+</head>
+<body>
+    <div id="header">
+        <h1 class="mainHeading">User management Application</h1>
+    </div>
+    <div id="left">
+        @{
+            int role = 1;
+        }
+
+        @if(role == 1)
+        {
+            <partial name="_AdminOptions"/>
+        }else if(role==2)
+        {
+            <partial name="_UserOptions"/>
+        }
+    </div>
+    <div id="main">
+        @RenderBody()
+    </div>
+</body>
+</html>

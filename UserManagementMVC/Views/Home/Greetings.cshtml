@@ -1,0 +1,50 @@
+﻿@using UserManagementMVC.Models;
+
+@model  Employee
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Greetings</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+</head>
+<body>
+
+    @{
+        int hour = DateTime.Now.Hour;
+
+        //Employee employee = ViewBag.Employee;       
+
+        Employee employee = Model;
+
+        string name = employee.Name;
+        DateTime dob = employee.DOB;
+        float salary = employee.Salary;
+    }
+
+    <h1 class="mainHeading">This is my first page</h1>
+
+    @if(hour >=0 && hour <12)
+    {
+        <h3 >Good morning @name</h3>
+    }else if(hour >=12 && hour <16)
+    {
+        <h3 class="greetings">Good Afternoon @name</h3>
+    }
+    else if (hour >= 16 && hour < 20)
+    {
+        <h3>Good Evening @name</h3>
+    }else
+    {
+        <h3>Good Night @name</h3>
+    }
+
+
+</body>
+</html>

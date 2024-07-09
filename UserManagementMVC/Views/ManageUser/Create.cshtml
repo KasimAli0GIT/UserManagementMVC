@@ -1,0 +1,71 @@
+﻿
+@model UserEntryVM
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4>Create User</h4>
+
+<br />
+<br />
+
+<form action="/manageuser/create" method="post">
+    <div  asp-validation-summary="All">
+        
+    </div>
+<table align="center" width="40%" cellpadding="5px">
+    <tr>
+        <th>Name</th>
+        <td>
+            <input type="text"  asp-for="Name" required maxlength="50" />
+        </td>
+        <td>
+                <span asp-validation-for="Name"></span>
+        </td>
+    </tr>
+        <tr>
+            <th>DOB</th>
+            <td>
+                <input type="date" asp-for="DOB" required />
+            </td>
+            <td>
+                <span asp-validation-for="DOB"></span>
+            </td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>
+                <input type="email" asp-for="Email"  required maxlength="50" />
+            </td>
+            <td>
+                <span asp-validation-for="Email"></span>
+            </td>
+        </tr>
+        <tr>
+            <th>Mobile</th>
+            <td>
+                <input type="text" asp-for="Mobile" required maxlength="10" />
+            </td>
+            <td>
+                <span asp-validation-for="Mobile"></span>
+            </td>
+        </tr>
+        <tr>
+            <th>Role</th>
+            <td>
+                <select asp-items="@(new SelectList(Model.Roles,"Id","Name"))"
+                asp-for="RoleId">
+            </select>
+            </td>
+            <td>
+                <span asp-validation-for="Name"></span>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" colspan="3">
+                <input type="submit" value="Add User" />
+            </td>
+        </tr>
+</table>
+
+</form>

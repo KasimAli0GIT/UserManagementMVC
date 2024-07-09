@@ -1,0 +1,59 @@
+﻿@model IEnumerable<User>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h4>Display and search users</h4>
+
+<div style="display:flex;justify-content:end;margin-right:20px;">
+    <a asp-action="create" asp-controller="ManageUser">Add New User</a>
+</div>
+<br />
+<div>
+    <table width="40%" align="center">
+        <tr>
+            <td>
+                <span>Enter name</span>
+                <input type="text" name="txtSearch" />
+                <button type="submit" >Search</button>
+            </td>
+            </tr>
+    </table>
+</div>
+<br />
+<br />
+<div>
+    <table align="center" width="80%" border="1">
+        <tr>
+            <th>
+               Name 
+            </th>
+            <th>DOB</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>RoleName</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            </tr>
+            @foreach (User item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.DOB.ToShortDateString()
+                    </td>
+                    <td>@item.Email</td>
+                <td>@item.Mobile</td>
+                <td>@item.Role.Name</td>
+                <td>
+                    @* <a href="/manageuser/edit/@item.Id" *@
+                    <a asp-action="edit" asp-controller="manageuser"
+                     asp-route-id="@item.Id">Edit</a>
+                </td>
+                </tr>
+            }
+    </table>
+</div>
